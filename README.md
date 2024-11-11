@@ -3,31 +3,63 @@
 Behold My Awesome Project!
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 License: Apache Software License 2.0
 
-## Settings
-
-Moved to [settings](https://cookiecutter-django.readthedocs.io/en/latest/1-getting-started/settings.html).
 
 ## Basic Commands
 
-### Setting Up Your Users
+### Docker (Recommended)
+This project is dockerized. To run the project, you need to have docker and docker-compose installed.
 
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+Run the following commands to start the project:
 
-- To create a **superuser account**, use this command:
+```bash
+docker-compose up
+```
 
-      $ python manage.py createsuperuser
+### Local environment (linux)
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+To run the project locally, you need to have Python 3.12.3 installed.
 
-### Type checks
 
-Running type checks with mypy:
+NOTE: If you are running this project locally, you should have a PostgreSQL database running on your machine. 
+You can use the docker-compose file to run a PostgreSQL database. 
 
-    $ mypy d3_chart
+To use postgresql with docker-compose, run the following command:
+
+```bash
+docker compose up postgres-db
+```
+
+If you want to use a different database, you can update the `POSTGRES_CONNECTION_STRING` in the `.env` file.
+
+
+1. Create a virtual environment and activate it:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+2. Install the dependencies:
+
+```bash
+pip install -r requirements/local.txt
+```
+
+3. Run the migrations:
+
+```bash
+python manage.py migrate
+```
+
+4. Run the server:
+
+```bash
+python manage.py runserver
+```
+
 
 ### Test coverage
 
@@ -41,10 +73,14 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 
     $ pytest
 
-### Live reloading and Sass CSS compilation
 
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally.html#using-webpack-or-gulp).
+<br />
 
-## Deployment
+### API Documentation
 
-The following details how to deploy this application.
+The server is running on `http://localhost:8000/`.
+
+There are two endpoints available:
+
+1. `/chart/chart` - This endpoint returns the d3 chart template.
+2. `/chart/api/chart-data/` - This endpoint returns the data for the d3 chart.

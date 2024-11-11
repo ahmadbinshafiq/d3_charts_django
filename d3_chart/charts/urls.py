@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .views import d3_chart_view
 from .views import chart_data_api_view
+from .views import d3_chart_view
 
 app_name = "users"
 urlpatterns = [

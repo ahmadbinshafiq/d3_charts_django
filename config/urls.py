@@ -23,7 +23,7 @@ urlpatterns = [
     path("users/", include("d3_chart.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("chart/", include("d3_chart.charts.urls")),
+    path("chart/", include("d3_chart.charts.urls", namespace="d3_chart")),
     # ...
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),

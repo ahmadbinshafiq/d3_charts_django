@@ -48,7 +48,7 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 
 DATABASES = {
     "default": env.db(
-        "DATABASE_URL",
+        "POSTGRES_CONNECTION_STRING",
         default="postgres://postgres:@localhost:5432/d3_chart",
     ),
 }
@@ -93,7 +93,6 @@ LOCAL_APPS = [
     "d3_chart.users",
     # Your stuff: custom apps go here
     "d3_chart.charts",
-
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
