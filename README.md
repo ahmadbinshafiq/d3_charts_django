@@ -35,7 +35,7 @@ docker compose up postgres-db
 If you want to use a different database, you can update the `POSTGRES_CONNECTION_STRING` in the `.env` file.
 
 
-1. Create a virtual environment and activate it:
+1. (Optional) Create a virtual environment and activate it:
 
 ```bash
 python3 -m venv venv
